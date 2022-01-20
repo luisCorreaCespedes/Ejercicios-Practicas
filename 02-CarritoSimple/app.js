@@ -1,7 +1,15 @@
 const carrito = document.getElementById('carrito');
 const template = document.getElementById('template');
+const footer = document.getElementById('footer');
+const templateFooter = document.getElementById('templateFooter');
 const fragment = document.createDocumentFragment();
-const botones = document.querySelectorAll('.card .btn');
+
+// Selección de botones
+document.addEventListener('click', e => {
+    if(e.target.matches('.btn-outline-primary')) {
+        agregarCarrito(e);
+    }
+});
 
 const carritoObjeto = [];
 
@@ -11,13 +19,17 @@ const agregarCarrito = (e) => {
     const producto = {
         titulo: e.target.dataset.fruta,
         id: e.target.dataset.fruta,
-        cantidad: 1
+        cantidad: 1,
+        precio: parseInt(e.target.dataset.precio)
     };
 
     const indice = carritoObjeto.findIndex((item) => item.id === producto.id);
 
     if (indice === -1) carritoObjeto.push(producto);
-    else carritoObjeto[indice].cantidad++;
+    else {
+        carritoObjeto[indice].cantidad++;
+        carritoObjeto[indice].precio = carritoObjeto[indice].cantidad * producto.precio;
+    }
 
     pintarCarrito(carritoObjeto);
 
@@ -40,4 +52,4 @@ const pintarCarrito = (array) => {
 };
 
 // Evento para agregar productos
-botones.forEach(btn => btn.addEventListener('click', agregarCarrito));
+//botones.forEach(btn => btn.addEventListener('click', agregarCarrito));
