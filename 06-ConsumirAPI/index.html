@@ -11,7 +11,7 @@
 
     <div class="container my-5">
 
-        <!-- Loeading -->
+        <!-- Loading -->
         <section class="d-flex-align-items-center d-none" id="loading">
             <strong>Cargando...</strong>
             <div class="spinner-border ms-auto" role="status" aria-hidden="true">
@@ -22,6 +22,9 @@
         <section class="row" id="card-dinamicas">
         </section>
         
+        <!-- Paginación -->
+        <div id="paginacion"></div>
+
     </div>
 
     <!-- Templates -->
@@ -35,6 +38,13 @@
                 </div>
             </div>
         </article>
+    </template>
+
+    <template id="template-paginacion">
+        <section class="my-3 d-flex justify-content-between">
+            <button class="btn btn-outline-secondary">Preview</button>
+            <button class="btn btn-outline-primary">Next</button>
+        </section>
     </template>
 
     <!-- Scrips -->

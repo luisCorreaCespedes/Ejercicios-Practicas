@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const cards = document.getElementById('card-dinamicas');
 const templateCard = document.getElementById('template-card').content;
 
-const fecthData = async () => {
+const fecthData = async (url='https://rickandmortyapi.com/api/character') => {
     try {
         loadingData(true);
-        const res = await fetch('https://rickandmortyapi.com/api/character');
+        const res = await fetch(url);
         const data = await res.json();
         pintarCard(data);
     } catch (error) {
@@ -20,6 +20,7 @@ const fecthData = async () => {
 
 const pintarCard = data => {
     const fragment = document.createDocumentFragment();
+    cards.textContent = '';
     data.results.forEach(item => {
         const clone = templateCard.cloneNode(true);
         clone.querySelector('h5').textContent = item.name;
@@ -28,6 +29,43 @@ const pintarCard = data => {
         fragment.appendChild(clone);
     });
     cards.appendChild(fragment);
+    pintarPaginacion(data.info);
+};
+
+const pintarPaginacion = data => {
+    const paginacion = document.getElementById('paginacion');
+    paginacion.textContent = '';
+    const templatePaginacion = document.getElementById('template-paginacion').content;
+    const clone = templatePaginacion.cloneNode(true);
+
+    if (data.prev) {
+        clone.querySelector('.btn-outline-secondary').disabled = false;
+    } else {
+        clone.querySelector('.btn-outline-secondary').disabled = true;
+    }
+
+    if (data.next) {
+        clone.querySelector('.btn-outline-primary').disabled = false;
+    } else {
+        clone.querySelector('.btn-outline-primary').disabled = true;
+    }
+
+    paginacion.appendChild(clone);
+    
+    //REVISAR ESTA DELEGACION
+    paginacion.addEventListener('click', e => {
+        if (e.target.matches('.btn-outline-primary')) {
+            if (data.next) {
+                if (data.prev) {
+                    fecthData(data.next);
+                }
+            }
+        }
+        if (e.target.matches('.btn-outline-secondary')) {
+            fecthData(data.prev);
+        }
+    });
+
 };
 
 const loadingData = estado => {
@@ -37,4 +75,4 @@ const loadingData = estado => {
     } else {
         loading.classList.add('d-none');
     }
-}
+};
