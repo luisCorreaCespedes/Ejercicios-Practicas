@@ -1,0 +1,41 @@
+.contenedor-proyecto {
+    width: 1170px;
+    height: 368px;
+    margin: 10px 10px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 3px 13px 1px rgb(0 0 0 / 9%);
+}
+
+.imagen-proyecto {
+    height: 100%;
+    width: auto;
+}
+
+.informacion.proyecto {
+    text-align: center;
+    padding: 40px;
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.nombre-proyecto {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.plataforma-proyecto {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    padding-bottom: 30px;
+    font-style: italic;
+}
+
+.descripcion-proyecto {
+    margin: 0 20px;
+    font-size: 1.1rem;
+    text-align: justify;
+}
