@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  color: #fff;
+  background-color: #1b1b32;
+  font-family:'Lucida Sans';
+  margin-top: 20px;
+}
+
+h1 {
+  color: #1b1b32;
+  font-size: 25px;
+  font-family: Tahoma;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-contenedor {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 400px;
+  height: auto;
+}
+
+.tareas-lista-principal {
+  width: 600px;
+  min-height: 500px;
+  background-color: #d0d0d5;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 25px;
+}
